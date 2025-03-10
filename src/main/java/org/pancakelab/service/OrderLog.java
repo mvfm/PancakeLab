@@ -1,19 +1,15 @@
 package org.pancakelab.service;
 
-import org.pancakelab.model.Order;
-import org.pancakelab.model.pancakes.PancakeRecipe;
-
-import java.util.List;
-
 public class OrderLog {
+    /*
     private static final StringBuilder log = new StringBuilder();
 
-    public static void logAddPancake(Order order, String description, List<PancakeRecipe> pancakes) {
-        long pancakesInOrder = pancakes.stream().filter(p -> p.getOrderId().equals(order.getId())).count();
+    public static void logAddPancake(Order order, Pancake pancake, List<Pancake> pancakes) {
+        long pancakesInOrder = pancakes.size();
 
-        log.append("Added pancake with description '%s' ".formatted(description))
+        log.append("Added pancake with description '%s' ".formatted(pancake.description()))
            .append("to order %s containing %d pancakes, ".formatted(order.getId(), pancakesInOrder))
-           .append("for building %d, room %d.".formatted(order.getBuilding(), order.getRoom()));
+           .append("for building %d, room %d.".formatted(order.getDeliveryAddress().getBuilding(), order.getDeliveryAddress().getRoom()));
     }
 
     public static void logRemovePancakes(Order order, String description, int count, List<PancakeRecipe> pancakes) {
@@ -35,4 +31,5 @@ public class OrderLog {
         log.append("Order %s with %d pancakes ".formatted(order.getId(), pancakesInOrder))
            .append("for building %d, room %d out for delivery.".formatted(order.getBuilding(), order.getRoom()));
     }
+     */
 }

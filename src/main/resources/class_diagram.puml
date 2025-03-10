@@ -1,0 +1,54 @@
+@startuml
+package "org.pancakelab" {
+
+  package exception {
+    class InvalidBuildingException
+    class InvalidIngredientsCombinationException
+    class InvalidPancakeRecipeException
+    class InvalidQuantityException
+    class InvalidRoomException
+    class NoIngredientsException
+    class NoPancakesInOrderException
+    class ValidationException
+  }
+
+  package model {
+    class Building
+    class BuildingRegistry
+    class BuildingRoomValidator
+    class DeliveryAddress
+    class Ingredient
+    class IngredientRules
+    class Order
+    class OrderStatus
+    class Pancake
+    class PancakePresets
+  }
+
+  package repository {
+    interface OrderRepository
+    class InMemoryOrderRepository
+  }
+
+  package service {
+    class OrderLog
+    interface OrderService
+    class OrderServiceImpl
+  }
+
+  class Main
+}
+
+' Relationships
+OrderRepository <|.. InMemoryOrderRepository
+OrderService <|.. OrderServiceImpl
+OrderServiceImpl --> OrderRepository
+OrderServiceImpl --> OrderLog
+
+Order --> OrderStatus
+Order --> DeliveryAddress
+Order --> Pancake
+Pancake --> Ingredient
+Pancake --> PancakePresets
+
+@enduml

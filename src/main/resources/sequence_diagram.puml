@@ -1,0 +1,24 @@
+@startuml
+
+participant Main
+participant DeliveryAddress
+participant OrderServiceImpl
+participant Order
+participant InMemoryOrderRepository
+participant Pancake
+
+Main -> DeliveryAddress : new()
+Main -> OrderServiceImpl : createOrder(DeliveryAddress)
+OrderServiceImpl -> Order : new()
+OrderServiceImpl -> InMemoryOrderRepository : save(order)
+InMemoryOrderRepository --> OrderServiceImpl : orderSaved
+OrderServiceImpl --> Main : orderCreated
+Main -> Pancake.Builder : withIngredient(ingredientName)
+Pancake.Builder -> Ingredient : new()
+Ingredient --> Pancake : ingredientCreated
+Main -> Pancake.Builder : build()
+Pancake.Builder --> Main : pancakeCreated
+Main -> OrderServiceImpl : addPancake(order, pancake)
+Main -> OrderServiceImpl : prepare()
+Main -> OrderServiceImpl : deliver()
+@enduml
